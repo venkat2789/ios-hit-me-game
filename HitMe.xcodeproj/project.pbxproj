@@ -11,7 +11,19 @@
 		532C821B2801EF5F008D0E28 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C821A2801EF5F008D0E28 /* ContentView.swift */; };
 		532C821D2801EF62008D0E28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 532C821C2801EF62008D0E28 /* Assets.xcassets */; };
 		532C82202801EF62008D0E28 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 532C821F2801EF62008D0E28 /* Preview Assets.xcassets */; };
+		532C822A2802194A008D0E28 /* GamePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C82292802194A008D0E28 /* GamePlay.swift */; };
+		532C8232280220FB008D0E28 /* HitMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C8231280220FB008D0E28 /* HitMeTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		532C8233280220FB008D0E28 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 532C820D2801EF5E008D0E28 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 532C82142801EF5E008D0E28;
+			remoteInfo = HitMe;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		532C82152801EF5E008D0E28 /* HitMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HitMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -19,10 +31,20 @@
 		532C821A2801EF5F008D0E28 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		532C821C2801EF62008D0E28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		532C821F2801EF62008D0E28 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		532C82292802194A008D0E28 /* GamePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlay.swift; sourceTree = "<group>"; };
+		532C822F280220FB008D0E28 /* HitMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HitMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		532C8231280220FB008D0E28 /* HitMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitMeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		532C82122801EF5E008D0E28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		532C822C280220FB008D0E28 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -36,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				532C82172801EF5E008D0E28 /* HitMe */,
+				532C8230280220FB008D0E28 /* HitMeTests */,
 				532C82162801EF5E008D0E28 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -44,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				532C82152801EF5E008D0E28 /* HitMe.app */,
+				532C822F280220FB008D0E28 /* HitMeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,9 +75,9 @@
 		532C82172801EF5E008D0E28 /* HitMe */ = {
 			isa = PBXGroup;
 			children = (
-				532C82182801EF5E008D0E28 /* HitMeApp.swift */,
-				532C821A2801EF5F008D0E28 /* ContentView.swift */,
-				532C821C2801EF62008D0E28 /* Assets.xcassets */,
+				532C8226280218C8008D0E28 /* App */,
+				532C8228280218D6008D0E28 /* Views */,
+				532C8227280218CF008D0E28 /* Models */,
 				532C821E2801EF62008D0E28 /* Preview Content */,
 			);
 			path = HitMe;
@@ -65,6 +89,39 @@
 				532C821F2801EF62008D0E28 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		532C8226280218C8008D0E28 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				532C82182801EF5E008D0E28 /* HitMeApp.swift */,
+				532C821C2801EF62008D0E28 /* Assets.xcassets */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		532C8227280218CF008D0E28 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				532C82292802194A008D0E28 /* GamePlay.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		532C8228280218D6008D0E28 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				532C821A2801EF5F008D0E28 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		532C8230280220FB008D0E28 /* HitMeTests */ = {
+			isa = PBXGroup;
+			children = (
+				532C8231280220FB008D0E28 /* HitMeTests.swift */,
+			);
+			path = HitMeTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +144,24 @@
 			productReference = 532C82152801EF5E008D0E28 /* HitMe.app */;
 			productType = "com.apple.product-type.application";
 		};
+		532C822E280220FB008D0E28 /* HitMeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 532C8235280220FB008D0E28 /* Build configuration list for PBXNativeTarget "HitMeTests" */;
+			buildPhases = (
+				532C822B280220FB008D0E28 /* Sources */,
+				532C822C280220FB008D0E28 /* Frameworks */,
+				532C822D280220FB008D0E28 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				532C8234280220FB008D0E28 /* PBXTargetDependency */,
+			);
+			name = HitMeTests;
+			productName = HitMeTests;
+			productReference = 532C822F280220FB008D0E28 /* HitMeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -99,6 +174,10 @@
 				TargetAttributes = {
 					532C82142801EF5E008D0E28 = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					532C822E280220FB008D0E28 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 532C82142801EF5E008D0E28;
 					};
 				};
 			};
@@ -116,6 +195,7 @@
 			projectRoot = "";
 			targets = (
 				532C82142801EF5E008D0E28 /* HitMe */,
+				532C822E280220FB008D0E28 /* HitMeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -130,6 +210,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		532C822D280220FB008D0E28 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -139,10 +226,27 @@
 			files = (
 				532C821B2801EF5F008D0E28 /* ContentView.swift in Sources */,
 				532C82192801EF5E008D0E28 /* HitMeApp.swift in Sources */,
+				532C822A2802194A008D0E28 /* GamePlay.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		532C822B280220FB008D0E28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				532C8232280220FB008D0E28 /* HitMeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		532C8234280220FB008D0E28 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 532C82142801EF5E008D0E28 /* HitMe */;
+			targetProxy = 532C8233280220FB008D0E28 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		532C82212801EF62008D0E28 /* Debug */ = {
@@ -317,6 +421,40 @@
 			};
 			name = Release;
 		};
+		532C8236280220FB008D0E28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.venkatsiva.HitMeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HitMe.app/HitMe";
+			};
+			name = Debug;
+		};
+		532C8237280220FB008D0E28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.venkatsiva.HitMeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HitMe.app/HitMe";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -334,6 +472,15 @@
 			buildConfigurations = (
 				532C82242801EF62008D0E28 /* Debug */,
 				532C82252801EF62008D0E28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		532C8235280220FB008D0E28 /* Build configuration list for PBXNativeTarget "HitMeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				532C8236280220FB008D0E28 /* Debug */,
+				532C8237280220FB008D0E28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
