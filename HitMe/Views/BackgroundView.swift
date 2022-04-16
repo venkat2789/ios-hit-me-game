@@ -18,7 +18,7 @@ struct BackgroundView: View {
         }
         .padding()
         .background(
-            Color("BackgroundColor")
+            RingsView()
         )
     }
 }
@@ -28,7 +28,11 @@ struct TopView: View {
     
     var body: some View {
         HStack{
-            ShapeCircleStroked(systemName: "arrow.counterclockwise")
+            Button(action: {
+                game.restartGame()
+            }) {
+                ShapeCircleStroked(systemName: "arrow.counterclockwise")
+            }
             Spacer()
             ShapeCircleFilled(systemName: "list.dash")
         }
@@ -57,6 +61,28 @@ struct BottomView: View {
             InfoView(game: $game, title: "Round", text: String(game.round))
         }
     }
+}
+
+struct RingsView: View {
+    
+    @Environment(\.colorScheme) var colorScheme
+    
+    var body: some View {
+        ZStack {
+            Color("BackgroundColor")
+                .edgesIgnoringSafeArea(.all)
+            ForEach(1..<6) { ring in
+                let size = CGFloat(ring * 100)
+                let opacityMultiplier  = colorScheme == .dark ? 0.1 : 0.3
+                Circle()
+                    .stroke(lineWidth: 20.0)
+                    .fill(
+                        RadialGradient(gradient: Gradient(colors: [Color ("RingsColor").opacity(opacityMultiplier * 0.8), Color ("RingsColor").opacity(0.0)]), center: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, startRadius: 100, endRadius: 300))
+                    .frame(width: size, height: size)
+            }
+        }
+    }
+    
 }
 
 struct BackgroundView_Previews: PreviewProvider {

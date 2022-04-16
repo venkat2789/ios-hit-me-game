@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var alertDisplayed = false
-    @State private var sliderValue = 50.0
+    @State private var sliderValue = 50.5
     @State private var game = Gameplay()
     
     var body: some View {
@@ -18,9 +18,9 @@ struct ContentView: View {
             BackgroundView(game: $game)
             VStack {
                 InstructionView(game: $game)
-                SliderView(sliderValue: $sliderValue)
                 HitMeButton(alertDisplayed: $alertDisplayed, sliderValue: $sliderValue, game: $game)
             }
+            SliderView(sliderValue: $sliderValue)
         }
     }
 }
@@ -59,7 +59,6 @@ struct HitMeButton: View {
     
     var body: some View {
         Button(action: {
-            //            print("Button tapped")
             alertDisplayed = true
         }) {
             Text("Hit me".uppercased())
@@ -79,7 +78,10 @@ struct HitMeButton: View {
         .strokeBorder(Color.white, lineWidth: 2.0))
         //alert below is specific to iOS 15
         .alert("Hello there!", isPresented: $alertDisplayed){
-            Button("Awesome!") { }
+            Button("Awesome!") {
+                let roundedValue = Int(sliderValue.rounded())
+                game.startNewRound(points: game.calculatePoints(sliderValue: roundedValue))
+            }
         } message: {
             let roundedValue = Int(sliderValue.rounded())
             Text("The slider value is: \(roundedValue).\n" + "You scored \(game.calculatePoints(sliderValue: roundedValue)) points this round.")
@@ -95,6 +97,6 @@ struct InstructionView: View {
             .padding(.leading, 30.0)
             .padding(.trailing, 30.0)
         BigNumberText(text: String(game.target))
+            .padding(.bottom, 100)
     }
-    
 }

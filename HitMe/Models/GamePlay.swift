@@ -14,6 +14,27 @@ struct Gameplay {
     
     func calculatePoints(sliderValue: Int) -> Int{
         let difference = abs(sliderValue - target)
-        return 100 - difference //100 points for an exact guess
+        let score = 100 - difference //100 points for an exact guess
+        var bonus = 0
+        
+        if(difference == 0){
+            bonus = 100
+        } else if (difference <= 2){
+            bonus = 50
+        }
+        
+        return score + bonus
+    }
+    
+    mutating func startNewRound(points: Int){
+        self.round += 1
+        self.score += points
+        target = Int.random(in: 1...100)
+    }
+    
+    mutating func restartGame(){
+        self.round = 1
+        self.score = 0
+        target = Int.random(in: 1...100)
     }
 }
