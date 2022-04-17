@@ -14,10 +14,10 @@ struct ShapeCircleStroked: View {
         Image(systemName: systemName)
             .font(.title)
             .foregroundColor(Color("TextColor"))
-            .frame(width: 56.0, height: 56.0)
+            .frame(width: Constants.Generic.roundedViewLength, height: Constants.Generic.roundedViewLength)
             .overlay(
                 Circle()
-                    .strokeBorder(Color("ShapeStrokeColor"), lineWidth: 2.0)
+                    .strokeBorder(Color("ShapeStrokeColor"), lineWidth: Constants.Generic.strokeWidth)
             )
 
     }
@@ -30,7 +30,7 @@ struct ShapeCircleFilled: View {
         Image(systemName: systemName)
             .font(.title)
             .foregroundColor(Color("ShapeTextColor"))
-            .frame(width: 56.0, height: 56.0)
+            .frame(width: Constants.Generic.roundedViewLength, height: Constants.Generic.roundedViewLength)
             .background(
                 Circle()
                     .fill(
@@ -49,10 +49,10 @@ struct ShapeRectangleStroked: View {
             .bold()
             .font(.title3)
             .foregroundColor(Color("TextColor"))
-            .frame(width: 68.0, height: 56.0)
+            .frame(width: Constants.Generic.roundRectViewWidth, height: Constants.Generic.roundRectViewHeight)
             .overlay(
-                RoundedRectangle(cornerRadius: 21.0)
-                    .strokeBorder(Color("ShapeStrokeColor"), lineWidth: 2.0)
+                RoundedRectangle(cornerRadius: Constants.Generic.roundRectCornerRadius)
+                    .strokeBorder(Color("ShapeStrokeColor"), lineWidth: Constants.Generic.strokeWidth)
             )
 
     }

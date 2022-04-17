@@ -17,10 +17,18 @@ struct ContentView: View {
         ZStack {
             BackgroundView(game: $game)
             VStack {
-                InstructionView(game: $game)
-                HitMeButton(alertDisplayed: $alertDisplayed, sliderValue: $sliderValue, game: $game)
+                InstructionView(game: $game, alertDisplayed: $alertDisplayed)
+                if(alertDisplayed){
+                    AlertView(alertDisplayed: $alertDisplayed, sliderValue: $sliderValue, game: $game)
+                        .transition(.scale)
+                } else {
+                    HitMeButton(alertDisplayed: $alertDisplayed, sliderValue: $sliderValue, game: $game)
+                        .transition(.scale)
+                }
             }
-            SliderView(sliderValue: $sliderValue)
+            if !alertDisplayed { SliderView(sliderValue: $sliderValue)
+                    .transition(.scale)
+            }
         }
     }
 }
@@ -59,7 +67,9 @@ struct HitMeButton: View {
     
     var body: some View {
         Button(action: {
-            alertDisplayed = true
+            withAnimation(){
+                alertDisplayed = true
+            }
         }) {
             Text("Hit me".uppercased())
                 .bold()
@@ -72,31 +82,32 @@ struct HitMeButton: View {
                 LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]), startPoint: .top, endPoint: .bottom)
             })
         .foregroundColor(Color.white)
-        .cornerRadius(21)
+        .cornerRadius(Constants.Generic.roundRectCornerRadius)
         .overlay(
-            RoundedRectangle(cornerRadius: 21.0)
-        .strokeBorder(Color.white, lineWidth: 2.0))
+            RoundedRectangle(cornerRadius: Constants.Generic.roundRectCornerRadius)
+                .strokeBorder(Color.white, lineWidth: Constants.Generic.strokeWidth))
         //alert below is specific to iOS 15
-        .alert("Hello there!", isPresented: $alertDisplayed){
-            Button("Awesome!") {
-                let roundedValue = Int(sliderValue.rounded())
-                game.startNewRound(points: game.calculatePoints(sliderValue: roundedValue))
-            }
-        } message: {
-            let roundedValue = Int(sliderValue.rounded())
-            Text("The slider value is: \(roundedValue).\n" + "You scored \(game.calculatePoints(sliderValue: roundedValue)) points this round.")
-        }
+//        .alert("Hello there!", isPresented: $alertDisplayed){
+//            Button("Awesome!") {
+//                let roundedValue = Int(sliderValue.rounded())
+//                game.startNewRound(points: game.calculatePoints(sliderValue: roundedValue))
+//            }
+//        } message: {
+//            let roundedValue = Int(sliderValue.rounded())
+//            Text("The slider value is: \(roundedValue).\n" + "You scored \(game.calculatePoints(sliderValue: roundedValue)) points this round.")
+//        }
     }
 }
 
 struct InstructionView: View {
     @Binding var game: Gameplay
+    @Binding var alertDisplayed: Bool
     
     var body: some View {
         InstructionText(text: "Pull the slider as close as you can to")
             .padding(.leading, 30.0)
             .padding(.trailing, 30.0)
         BigNumberText(text: String(game.target))
-            .padding(.bottom, 100)
+            .padding(.bottom, alertDisplayed ? 0 : 100)
     }
 }
