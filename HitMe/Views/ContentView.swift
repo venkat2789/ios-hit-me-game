@@ -86,16 +86,6 @@ struct HitMeButton: View {
         .overlay(
             RoundedRectangle(cornerRadius: Constants.Generic.roundRectCornerRadius)
                 .strokeBorder(Color.white, lineWidth: Constants.Generic.strokeWidth))
-        //alert below is specific to iOS 15
-//        .alert("Hello there!", isPresented: $alertDisplayed){
-//            Button("Awesome!") {
-//                let roundedValue = Int(sliderValue.rounded())
-//                game.startNewRound(points: game.calculatePoints(sliderValue: roundedValue))
-//            }
-//        } message: {
-//            let roundedValue = Int(sliderValue.rounded())
-//            Text("The slider value is: \(roundedValue).\n" + "You scored \(game.calculatePoints(sliderValue: roundedValue)) points this round.")
-//        }
     }
 }
 
