@@ -47,10 +47,12 @@ struct Gameplay {
         self.round += 1
         self.score += points
         target = Int.random(in: 1...100)
-        addToLeaderBoard(score: score, date: Date())
     }
     
     mutating func restartGame(){
+        if (self.score > 0 && self.round == 5){
+            addToLeaderBoard(score: score, date: Date())
+        }
         self.round = 1
         self.score = 0
         target = Int.random(in: 1...100)

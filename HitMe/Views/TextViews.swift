@@ -105,7 +105,7 @@ struct LeaderBoardDateText: View {
     var date: Date
     
     var body: some View {
-        Text(date.formatted(.dateTime.day().month().year()))
+        Text(date.formatted(.dateTime.day().month().hour().minute()))
             .kerning(-0.2)
             .font(.title3)
             .fontWeight(.bold)

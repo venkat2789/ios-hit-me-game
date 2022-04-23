@@ -16,18 +16,34 @@ struct AlertView: View {
     var body: some View {
         let roundedValue = Int(sliderValue.rounded())
         let points = game.calculatePoints(sliderValue: roundedValue)
+        let finalPoints = game.score
+        let endOfRound: Bool = game.round == 5
         
         VStack(spacing: 10) {
-            InstructionText(text: "The slider value is")
-            BigNumberText(text: String(roundedValue))
-            AlertBodyText(text: "You scored \(points) points")
-            Button(action: {
-                withAnimation(){
-                    alertDisplayed = false
+            if (endOfRound){
+                InstructionText(text: "Game Over!")
+                BigNumberText(text: String(finalPoints))
+                    AlertBodyText(text: "is your final score")
+                Button(action: {
+                    withAnimation(){
+                        alertDisplayed = false
+                    }
+                     game.restartGame()
+                }) {
+                    AlertButtonText(text: "Close")
                 }
-                game.startNewRound(points: points)
-            }) {
-                AlertButtonText(text: "Start New Round")
+            } else {
+                InstructionText(text: "The slider value is")
+                BigNumberText(text: String(roundedValue))
+                    AlertBodyText(text: "You scored \(points) points")
+                Button(action: {
+                    withAnimation(){
+                        alertDisplayed = false
+                    }
+                    game.startNewRound(points: points)
+                }) {
+                    AlertButtonText(text: "Start New Round")
+                }
             }
             
         }
