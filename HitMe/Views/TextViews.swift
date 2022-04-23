@@ -46,7 +46,7 @@ struct SliderLabelText: View {
     
 }
 
-struct BottomLabelText: View {
+struct LabelText: View {
     var text: String
     
     var body: some View {
@@ -68,7 +68,6 @@ struct AlertBodyText: View {
             .fontWeight(.semibold)
             .multilineTextAlignment(.center)
             .lineSpacing(10)
-
     }
     
 }
@@ -84,7 +83,47 @@ struct AlertButtonText: View {
             .frame(maxWidth: .infinity)
             .background(Color("AccentColor"))
             .cornerRadius(12.0)
+    }
+    
+}
 
+struct LeaderBoardScoreText: View {
+    var score: Int
+    
+    var body: some View {
+        Text(String(score))
+            .kerning(-0.2)
+            .font(.title3)
+            .fontWeight(.bold)
+            .foregroundColor(Color("TextColor"))
+
+    }
+    
+}
+
+struct LeaderBoardDateText: View {
+    var date: Date
+    
+    var body: some View {
+        Text(date.formatted(.dateTime.day().month().year()))
+            .kerning(-0.2)
+            .font(.title3)
+            .fontWeight(.bold)
+            .foregroundColor(Color("TextColor"))
+
+    }
+    
+}
+
+struct LeaderBoardTitleText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text.uppercased())
+            .kerning(2.0)
+            .font(.title)
+            .fontWeight(.black)
+            .foregroundColor(Color("TextColor"))
     }
     
 }
@@ -95,9 +134,12 @@ struct TextViews_Previews: PreviewProvider {
             InstructionText(text: "Instructions")
             BigNumberText(text: "55")
             SliderLabelText(text: "45")
-            BottomLabelText(text: "Score")
+            LabelText(text: "Score")
             AlertBodyText(text: "You scored this many points\n in this round")
             AlertButtonText(text: "Start New Round")
+            LeaderBoardScoreText(score: 10)
+            LeaderBoardDateText(date: Date())
+            LeaderBoardTitleText(text: "Leaderboard")
         }
         .padding()
     }

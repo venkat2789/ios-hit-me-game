@@ -25,6 +25,7 @@ struct BackgroundView: View {
 
 struct TopView: View {
     @Binding var game: Gameplay
+    @State var leaderboardDisplayed = false
     
     var body: some View {
         HStack{
@@ -34,7 +35,11 @@ struct TopView: View {
                 ShapeCircleStroked(systemName: "arrow.counterclockwise")
             }
             Spacer()
-            ShapeCircleFilled(systemName: "list.dash")
+            Button(action: {
+                leaderboardDisplayed = true
+            }) {
+                ShapeCircleFilled(systemName: "list.dash")
+            }.sheet(isPresented: $leaderboardDisplayed, onDismiss: {}, content: { LeaderBoardView(leaderboardDisplayed: $leaderboardDisplayed, game: $game) })
         }
     }
 }
@@ -46,7 +51,7 @@ struct InfoView: View {
     
     var body: some View {
         VStack(spacing: 5){
-            BottomLabelText(text: title)
+            LabelText(text: title)
             ShapeRectangleStroked(text: text)
         }
     }

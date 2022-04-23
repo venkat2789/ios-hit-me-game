@@ -58,12 +58,31 @@ struct ShapeRectangleStroked: View {
     }
 }
 
+struct ShapeCircleStrokedWithText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .kerning(-0.2)
+            .bold()
+            .font(.title3)
+            .foregroundColor(Color("TextColor"))
+            .frame(width: Constants.Generic.roundedViewLength, height: Constants.Generic.roundedViewLength)
+            .overlay(
+                Circle()
+                    .strokeBorder(Color("LeaderBoardRowColor"), lineWidth: Constants.Generic.strokeWidth)
+            )
+
+    }
+}
+
 struct PreviewView: View {
     var body: some View{
         HStack{
             ShapeCircleStroked(systemName: "arrow.counterclockwise")
             ShapeCircleFilled(systemName: "list.dash")
             ShapeRectangleStroked(text: "999")
+            ShapeCircleStrokedWithText(text: "99")
         }
     }
 }

@@ -56,5 +56,15 @@ class HitMeTests: XCTestCase {
         XCTAssertEqual(game.score, 0)
         XCTAssertEqual(game.round, 1)
     }
+    
+    func testLeaderBoard() throws {
+        game.startNewRound(points: 50)
+        XCTAssertTrue(game.leaderBoardEntries.count == 1)
+        XCTAssertTrue(game.leaderBoardEntries[0].score == 50)
+        game.startNewRound(points: 100)
+        XCTAssertTrue(game.leaderBoardEntries.count == 2)
+        XCTAssertTrue(game.leaderBoardEntries[0].score == 100, "Mismatched: \(game.leaderBoardEntries[0].score)")
+        XCTAssertTrue(game.leaderBoardEntries[1].score == 50)
+    }
 
 }
