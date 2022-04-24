@@ -72,6 +72,20 @@ struct AlertBodyText: View {
     
 }
 
+struct HowToBodyText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .kerning(0.2)
+            .font(.subheadline)
+            .fontWeight(.semibold)
+            .multilineTextAlignment(.center)
+            .lineSpacing(2)
+    }
+    
+}
+
 struct AlertButtonText: View {
     var text: String
     
@@ -140,6 +154,7 @@ struct TextViews_Previews: PreviewProvider {
             LeaderBoardScoreText(score: 10)
             LeaderBoardDateText(date: Date())
             LeaderBoardTitleText(text: "Leaderboard")
+            HowToBodyText(text: "You are given a target")
         }
         .padding()
     }

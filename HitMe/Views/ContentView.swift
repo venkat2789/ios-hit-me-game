@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State private var howToDisplayed = true
     @State private var alertDisplayed = false
     @State private var sliderValue = 50.5
     @State private var game = Gameplay()
@@ -17,16 +18,21 @@ struct ContentView: View {
         ZStack {
             BackgroundView(game: $game)
             VStack {
-                InstructionView(game: $game, alertDisplayed: $alertDisplayed)
-                if(alertDisplayed){
-                    AlertView(alertDisplayed: $alertDisplayed, sliderValue: $sliderValue, game: $game)
+                if (howToDisplayed){
+                    HowToView(howToDisplayed: $howToDisplayed)
                         .transition(.scale)
                 } else {
-                    HitMeButton(alertDisplayed: $alertDisplayed, sliderValue: $sliderValue, game: $game)
-                        .transition(.scale)
+                    InstructionView(game: $game, alertDisplayed: $alertDisplayed)
+                    if(alertDisplayed){
+                        AlertView(alertDisplayed: $alertDisplayed, sliderValue: $sliderValue, game: $game)
+                            .transition(.scale)
+                    } else {
+                        HitMeButton(alertDisplayed: $alertDisplayed, sliderValue: $sliderValue, game: $game)
+                            .transition(.scale)
+                    }
                 }
             }
-            if !alertDisplayed { SliderView(sliderValue: $sliderValue)
+            if (!alertDisplayed && !howToDisplayed) { SliderView(sliderValue: $sliderValue)
                     .transition(.scale)
             }
         }
