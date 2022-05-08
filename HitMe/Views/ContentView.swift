@@ -11,28 +11,32 @@ struct ContentView: View {
     
     @State private var howToDisplayed = true
     @State private var alertDisplayed = false
+    @State private var endOfGameAlertDisplayed = false
     @State private var sliderValue = 50.5
     @State private var game = Gameplay()
     
     var body: some View {
         ZStack {
-            BackgroundView(game: $game)
+            BackgroundView(game: $game, alertDisplayed: $alertDisplayed, endOfGameAlertDisplayed: $endOfGameAlertDisplayed, sliderValue: $sliderValue)
             VStack {
                 if (howToDisplayed){
                     HowToView(howToDisplayed: $howToDisplayed)
                         .transition(.scale)
                 } else {
-                    InstructionView(game: $game, alertDisplayed: $alertDisplayed)
+                    InstructionView(game: $game, alertDisplayed: $alertDisplayed, endOfGameAlertDisplayed: $endOfGameAlertDisplayed)
                     if(alertDisplayed){
-                        AlertView(alertDisplayed: $alertDisplayed, sliderValue: $sliderValue, game: $game)
+                        AlertView(alertDisplayed: $alertDisplayed, endOfGameAlertDisplayed: $endOfGameAlertDisplayed, sliderValue: $sliderValue, game: $game)
                             .transition(.scale)
+                    } else if (endOfGameAlertDisplayed) {
+                        EndOfGameView(alertDisplayed: $alertDisplayed, sliderValue: $sliderValue, game: $game)
                     } else {
                         HitMeButton(alertDisplayed: $alertDisplayed, sliderValue: $sliderValue, game: $game)
                             .transition(.scale)
                     }
                 }
             }
-            if (!alertDisplayed && !howToDisplayed) { SliderView(sliderValue: $sliderValue)
+            if (!alertDisplayed && !howToDisplayed && !endOfGameAlertDisplayed) {
+                SliderView(sliderValue: $sliderValue)
                     .transition(.scale)
             }
         }
@@ -98,12 +102,13 @@ struct HitMeButton: View {
 struct InstructionView: View {
     @Binding var game: Gameplay
     @Binding var alertDisplayed: Bool
+    @Binding var endOfGameAlertDisplayed: Bool
     
     var body: some View {
         InstructionText(text: "Pull the slider as close as you can to")
             .padding(.leading, 30.0)
             .padding(.trailing, 30.0)
         BigNumberText(text: String(game.target))
-            .padding(.bottom, alertDisplayed ? 0 : 100)
+            .padding(.bottom, alertDisplayed ||  endOfGameAlertDisplayed ? 0 : 100)
     }
 }

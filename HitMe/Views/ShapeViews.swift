@@ -76,13 +76,52 @@ struct ShapeCircleStrokedWithText: View {
     }
 }
 
+struct ShapeCircleStrokedSmall: View {
+    var systemName: String
+    
+    var body: some View {
+        Image(systemName: systemName)
+            .font(.caption)
+            .foregroundColor(Color("TextColor"))
+            .frame(width: Constants.Generic.roundedViewLengthSmall, height: Constants.Generic.roundedViewLengthSmall)
+            .overlay(
+                Circle()
+                    .strokeBorder(Color("ShapeStrokeColor"), lineWidth: Constants.Generic.strokeWidth)
+            )
+
+    }
+}
+
+struct ShapeCircleFilledSmall: View {
+    var systemName: String
+    
+    var body: some View {
+        Image(systemName: systemName)
+            .font(.caption)
+            .foregroundColor(Color("ShapeTextColor"))
+            .frame(width: Constants.Generic.roundedViewLengthSmall, height: Constants.Generic.roundedViewLengthSmall)
+            .background(
+                Circle()
+                    .fill(
+                            Color("ShapeFillColor")
+                    )
+            )
+    }
+}
+
 struct PreviewView: View {
     var body: some View{
-        HStack{
-            ShapeCircleStroked(systemName: "arrow.counterclockwise")
-            ShapeCircleFilled(systemName: "list.dash")
-            ShapeRectangleStroked(text: "999")
-            ShapeCircleStrokedWithText(text: "99")
+        VStack {
+            HStack{
+                ShapeCircleStroked(systemName: "arrow.counterclockwise")
+                ShapeCircleFilled(systemName: "list.dash")
+                ShapeRectangleStroked(text: "999")
+                ShapeCircleStrokedWithText(text: "99")
+            }
+            HStack {
+                ShapeCircleStrokedSmall(systemName: "arrow.counterclockwise")
+                ShapeCircleFilledSmall(systemName: "list.dash")
+            }
         }
     }
 }

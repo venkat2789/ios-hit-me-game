@@ -9,10 +9,13 @@ import SwiftUI
 
 struct BackgroundView: View {
     @Binding var game: Gameplay
+    @Binding var alertDisplayed: Bool
+    @Binding var endOfGameAlertDisplayed : Bool
+    @Binding var sliderValue: Double
     
     var body: some View {
         VStack{
-            TopView(game: $game)
+            TopView(game: $game, alertDisplayed: $alertDisplayed, endOfGameAlertDisplayed: $endOfGameAlertDisplayed, sliderValue: $sliderValue)
             Spacer()
             BottomView(game: $game)
         }
@@ -25,12 +28,18 @@ struct BackgroundView: View {
 
 struct TopView: View {
     @Binding var game: Gameplay
+    @Binding var alertDisplayed: Bool
+    @Binding var endOfGameAlertDisplayed : Bool
+    @Binding var sliderValue: Double
     @State var leaderboardDisplayed = false
     
     var body: some View {
         HStack{
             Button(action: {
+                alertDisplayed = false
+                endOfGameAlertDisplayed = false
                 game.restartGame()
+                sliderValue = 50.5
             }) {
                 ShapeCircleStroked(systemName: "arrow.counterclockwise")
             }
@@ -92,6 +101,6 @@ struct RingsView: View {
 
 struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
-        BackgroundView(game: .constant(Gameplay()))
+        BackgroundView(game: .constant(Gameplay()), alertDisplayed: Binding.constant(false), endOfGameAlertDisplayed: Binding.constant(false), sliderValue: Binding.constant(50.5))
     }
 }

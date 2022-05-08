@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		531E3B472814C5D2002BD938 /* HowToView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531E3B462814C5D1002BD938 /* HowToView.swift */; };
+		531E3B72281F5FAE002BD938 /* EndOfGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531E3B71281F5FAE002BD938 /* EndOfGameView.swift */; };
 		532C82192801EF5E008D0E28 /* HitMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C82182801EF5E008D0E28 /* HitMeApp.swift */; };
 		532C821B2801EF5F008D0E28 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C821A2801EF5F008D0E28 /* ContentView.swift */; };
 		532C821D2801EF62008D0E28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 532C821C2801EF62008D0E28 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		531E3B462814C5D1002BD938 /* HowToView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToView.swift; sourceTree = "<group>"; };
+		531E3B71281F5FAE002BD938 /* EndOfGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndOfGameView.swift; sourceTree = "<group>"; };
 		532C82152801EF5E008D0E28 /* HitMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HitMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		532C82182801EF5E008D0E28 /* HitMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitMeApp.swift; sourceTree = "<group>"; };
 		532C821A2801EF5F008D0E28 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				532C823E280B0C36008D0E28 /* AlertView.swift */,
 				532C8242280C9381008D0E28 /* LeaderBoardView.swift */,
 				531E3B462814C5D1002BD938 /* HowToView.swift */,
+				531E3B71281F5FAE002BD938 /* EndOfGameView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				532C823D2803747E008D0E28 /* BackgroundView.swift in Sources */,
+				531E3B72281F5FAE002BD938 /* EndOfGameView.swift in Sources */,
 				531E3B472814C5D2002BD938 /* HowToView.swift in Sources */,
 				532C821B2801EF5F008D0E28 /* ContentView.swift in Sources */,
 				532C823F280B0C37008D0E28 /* AlertView.swift in Sources */,

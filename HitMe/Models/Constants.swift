@@ -16,6 +16,7 @@ enum Constants {
         public static let roundRectViewWidth = CGFloat(68.0)
         public static let roundRectViewHeight = CGFloat(56.0)
         public static let roundRectCornerRadius = CGFloat(21.0)
+        public static let roundedViewLengthSmall = CGFloat(23.0)
     }
     
     enum LeaderBoard {

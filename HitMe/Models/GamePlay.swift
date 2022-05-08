@@ -49,10 +49,12 @@ struct Gameplay {
         target = Int.random(in: 1...100)
     }
     
+    mutating func calculateFinalPoints(points: Int){
+        self.score += points
+        addToLeaderBoard(score: score, date: Date())
+    }
+    
     mutating func restartGame(){
-        if (self.score > 0 && self.round == 5){
-            addToLeaderBoard(score: score, date: Date())
-        }
         self.round = 1
         self.score = 0
         target = Int.random(in: 1...100)
